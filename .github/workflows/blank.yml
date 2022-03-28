@@ -25,11 +25,7 @@ jobs:
       - name: Infra
         if: "!contains(github.ref, 'dependabot') || env.INFRA_CHANGED == 1"
         run: |
-          git --no-pager diff  --output=check.txt --name-only HEAD~1..HEAD infra/ .github/
-          cat check.txt
-          if [[ $(wc -l <check.txt) -ge 1 ]]; then
-            echo Infra
-          fi
+          echo "running infra step"
 
       - name: App
         run: |

@@ -23,7 +23,7 @@ jobs:
           echo "APP_CHANGED=$(if [[ $(git --no-pager diff --name-only HEAD~1..HEAD app .github | wc -l) -ge 1 ]]; then echo 1; else echo 0; fi)"  >> $GITHUB_ENV
 
       - name: Infra
-        if: "!contains(github.ref, 'dependabot') || env.INFRA_CHANGED == 1"
+        if: "!contains(github.ref, 'dependabot') && env.INFRA_CHANGED == 1"
         run: |
           echo "running infra step"
 

@@ -25,8 +25,7 @@ jobs:
       - name: Test
         run: |
           echo ${{ steps.changed-files.outputs.all_changed_files }}
-          printenv
-
+          
       # Runs a single command using the runners shell
       - name: Run always
         run: echo Hello, world!

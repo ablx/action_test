@@ -27,9 +27,9 @@ jobs:
           echo ${{ steps.changed-files.outputs.all_changed_files }}
           
       # Runs a single command using the runners shell
-      - name: Run always
-        run: echo Hello, world!
-
-      - name: Do not run for dependabot
+      - name: Infra
         if: "!contains(github.ref, 'dependabot')"
-        run: echo Hello, world!
+        run: echo Infra
+        
+      - name: App
+        run: echo App

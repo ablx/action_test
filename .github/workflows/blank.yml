@@ -23,7 +23,6 @@ jobs:
         uses: tj-actions/changed-files@v18.4
         
       - name: Test
-        id: changed-files
         run: |
           echo ${{ steps.changed-files.outputs.all_changed_files }}
           printenv

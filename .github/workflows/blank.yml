@@ -28,6 +28,7 @@ jobs:
           echo "running infra step"
 
       - name: App
+        if: "env.APP_CHANGED == 1"
         run: |
           echo $GITHUB_ENV
           echo INFRA_CHANGED

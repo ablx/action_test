@@ -15,6 +15,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Changed files
+        uses: tj-actions/changed-files@v18.4
+        
+      - name: Test
+        run: |
+          echo ${{ steps.changed-files.outputs.all_changed_files }}
 
       # Runs a single command using the runners shell
       - name: Run always

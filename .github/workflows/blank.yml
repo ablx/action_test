@@ -12,19 +12,20 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-      -
-    - name: Infra
-        if: "!contains(github.ref, 'dependabot')"
-        run: |
-        git --no-pager diff  --output=check.txt --name-only HEAD~1..HEAD infra/
-        cat check.txt
-        if [[ $(wc -l <check.txt) -ge 1 ]]; then
-          echo Infra
-        fi
-        
-      - name: App
-        git --no-pager diff  --output=check.txt --name-only HEAD~1..HEAD app/
-        cat check.txt
-        if [[ $(wc -l <check.txt) -ge 1 ]]; then
-          echo App
-        fi
+    steps:
+      - name: Infra
+          if: "!contains(github.ref, 'dependabot')"
+          run: |
+          git --no-pager diff  --output=check.txt --name-only HEAD~1..HEAD infra/
+          cat check.txt
+          if [[ $(wc -l <check.txt) -ge 1 ]]; then
+            echo Infra
+          fi
+
+        - name: App
+          run: |
+          git --no-pager diff  --output=check.txt --name-only HEAD~1..HEAD app/
+          cat check.txt
+          if [[ $(wc -l <check.txt) -ge 1 ]]; then
+            echo App
+          fi
